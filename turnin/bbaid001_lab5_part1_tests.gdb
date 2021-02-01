@@ -27,28 +27,22 @@ echo ======================================================\n
 echo Running all tests..."\n\n
 
 # Example test:
-test "PINA: 0x00  => PORTB: 0x2A"
-setPINA 0x00
+test "PINA: 0xFF  => PORTC: 0x40"
+setPINA 0xFF
 continue 2
-expectPORTB 0x2A
+expectPORTC 0x40
 checkResult
 
-test "PINA : 0x01, 0x00  => PORTB: 0x15"
-setPINA 0x01
+test "PINA : 0x7C => PORTC: 0x70"
+setPINA = 0x7C
 continue 2
-setPINA 0x00
-expectPORTB 0x15
+expectPORTC 0x70
 checkResult
 
-test "PINA : 0x01, 0x00, 0x01, 0x00  => PORTC: 0x2A"
-setPINA 0x01
+test "PINA: 0xF8 => PORTC: 0x3C"
+setPINA = 0xF8
 continue 2
-setPINA 0x00
-continue 2
-setPINA 0x01
-continue 2
-setPINA 0x00
-expectPORTC = 0x2A
+expectPORTC = 0xF8
 checkResult
 
 set $passed=$tests-$failed
