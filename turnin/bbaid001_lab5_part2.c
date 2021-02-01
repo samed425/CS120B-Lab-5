@@ -12,7 +12,7 @@
 #include "simAVRHeader.h"
 #endif
 
-enum States{INIT, wait, inc, dec, reset} state;
+enum States{INIT, wait, inc, dec, reset, depress} state;
 unsigned char temp;
 unsigned char val;
 
@@ -44,6 +44,9 @@ void Tick()
 	PORTC = val;
 	break;
 
+    case (depress) :
+	break;
+
     default:
 	break;    
 }
@@ -61,16 +64,20 @@ void Tick()
 	break;
 
     case (inc) :
-	state = wait;
+	state = depress;
 	break;
 
     case (dec) :
-	state = wait;
+	state = depress;
 	break;
 
     case (reset) :
 	val = 0;
 	PORTC = val;
+	break;
+
+   case (depress) :
+	if (!PA0 && !PA1) { state = wait; }	
 	break;
 
     default:
