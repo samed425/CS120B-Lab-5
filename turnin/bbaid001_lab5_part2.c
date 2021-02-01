@@ -29,11 +29,13 @@ void Tick()
 	break;
     
     case (inc) :
+	if (val == 9) { break; }
 	val = val + 1;
 	PORTC = val;
 	break;
 
     case (dec) :
+	if (val == 0) { break;}
 	val = val - 1;
 	break;
 
