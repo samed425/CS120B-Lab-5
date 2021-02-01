@@ -34,7 +34,7 @@ void Tick()
 	   break;
 	
 	case (s2) :
-	   if (!button) { state = s3; }
+	   if (button) { state = s3; }
 	   else { state = s2; }
 	   break;
 
